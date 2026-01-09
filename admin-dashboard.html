@@ -1,0 +1,23 @@
+<h1>Admin Dashboard</h1>
+<p>Manage Users</p>
+
+<input id="username" placeholder="Username">
+<input id="password" placeholder="Password">
+<select id="role">
+    <option value="user">User</option>
+    <option value="admin">Admin</option>
+</select>
+<button onclick="addUser()">Add</button>
+
+<table>
+<thead>
+<tr>
+<th>#</th><th>User</th><th>Role</th><th>Action</th>
+</tr>
+</thead>
+<tbody id="userTable"></tbody>
+</table>
+
+<button onclick="logout()">Logout</button>
+
+<script src="admin.js"></script>
