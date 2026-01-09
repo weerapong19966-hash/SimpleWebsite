@@ -1,69 +1,61 @@
+const loginUser = JSON.parse(localStorage.getItem("loginUser"));
+if (!loginUser || loginUser.role !== "admin") {
+    location.href = "index.html";
+}
+
 let users = JSON.parse(localStorage.getItem("users")) || [];
 let editIndex = null;
 
-function renderUsers() {
-    const table = document.getElementById("userTable");
-    table.innerHTML = "";
-
-    users.forEach((u, i) => {
-        table.innerHTML += `
+function render() {
+    userTable.innerHTML = "";
+    users.forEach((u,i)=>{
+        userTable.innerHTML += `
         <tr>
-            <td>${i + 1}</td>
+            <td>${i+1}</td>
             <td>${u.username}</td>
-            <td>${u.password}</td>
+            <td>${u.role}</td>
             <td>
-                <button class="edit" onclick="editUser(${i})">Edit</button>
-                <button class="delete" onclick="deleteUser(${i})">Delete</button>
+                <button onclick="editUser(${i})">Edit</button>
+                <button onclick="delUser(${i})">Delete</button>
             </td>
-        </tr>
-        `;
+        </tr>`;
     });
-
     localStorage.setItem("users", JSON.stringify(users));
 }
 
 function addUser() {
-    const user = username.value;
-    const pass = password.value;
-
-    if (!user || !pass) {
-        alert("Fill all fields");
-        return;
-    }
-
     if (editIndex === null) {
-        users.push({ username: user, password: pass });
+        users.push({
+            username: username.value,
+            password: password.value,
+            role: role.value
+        });
     } else {
-        users[editIndex] = { username: user, password: pass };
+        users[editIndex] = {
+            username: username.value,
+            password: password.value,
+            role: role.value
+        };
         editIndex = null;
     }
-
-    username.value = "";
-    password.value = "";
-    renderUsers();
+    render();
 }
 
-function editUser(index) {
-    username.value = users[index].username;
-    password.value = users[index].password;
-    editIndex = index;
+function editUser(i) {
+    username.value = users[i].username;
+    password.value = users[i].password;
+    role.value = users[i].role;
+    editIndex = i;
 }
 
-function deleteUser(index) {
-    if (confirm("Delete this user?")) {
-        users.splice(index, 1);
-        renderUsers();
-    }
+function delUser(i) {
+    users.splice(i,1);
+    render();
 }
 
 function logout() {
-    localStorage.removeItem("login");
-    window.location.href = "index.html";
+    localStorage.removeItem("loginUser");
+    location.href = "index.html";
 }
 
-// PROTECT PAGE
-if (localStorage.getItem("login") !== "true") {
-    window.location.href = "index.html";
-}
-
-renderUsers();
+render();
