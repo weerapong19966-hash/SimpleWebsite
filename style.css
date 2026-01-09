@@ -1,0 +1,104 @@
+* {
+    font-family: 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    color: #fff;
+}
+
+.btn-group {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 30px;
+    background: #fff;
+    color: #764ba2;
+    text-decoration: none;
+    border-radius: 30px;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+.btn.outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+/* POPUP */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: .4s;
+}
+
+.popup:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-content {
+    width: 350px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    transition: .4s;
+    text-align: center;
+}
+
+.popup:target .popup-content {
+    transform: translate(-50%,-50%);
+}
+
+.popup-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.popup-content button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 26px;
+    text-decoration: none;
+    color: #aaa;
+}
+
+.hint {
+    margin-top: 15px;
+    font-size: 14px;
+}
