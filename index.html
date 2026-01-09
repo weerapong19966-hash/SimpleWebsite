@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My GitHub Page</title>
+    <title>Login Popup</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello GitHub Pages 🌍</h1>
-    <p>นี่คือเว็บไซต์จาก GitHub Pages</p>
+
+<!-- ปุ่มเปิด Popup -->
+<a href="#login-popup" class="open-btn">Login</a>
+
+<!-- Popup -->
+<div id="login-popup" class="popup">
+    <div class="popup-content">
+        <a href="#" class="close-btn">&times;</a>
+        <h2>Welcome Back</h2>
+        <p>Please login to your account</p>
+
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>
